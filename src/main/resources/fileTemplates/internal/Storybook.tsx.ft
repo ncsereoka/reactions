@@ -1,0 +1,12 @@
+import React from 'react';
+
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+
+import ${NAME} from './${NAME}';
+
+export default {
+    title: '${NAME}',
+    component: ${NAME},
+} as ComponentMeta<typeof ${NAME}>;
+
+export const Default: ComponentStory<typeof ${NAME}> = () => <${NAME} />;

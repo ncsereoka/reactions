@@ -1,0 +1,7 @@
+import styles from './${NAME}.module.css';
+
+const ${NAME} = () => {
+    return <div className={styles.container}>${NAME}</div>;
+};
+
+export default ${NAME};

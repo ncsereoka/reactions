@@ -27,3 +27,13 @@ patchPluginXml {
 test {
     useJUnitPlatform()
 }
+
+signPlugin {
+    certificateChainFile = new File(System.getenv("CERTIFICATE_CHAIN") ?: "./certs/chain.crt")
+    privateKeyFile = new File(System.getenv("PRIVATE_KEY") ?: "./certs/key.pem")
+    password = System.getenv("PRIVATE_KEY_PASSWORD")
+}
+
+publishPlugin {
+    token = System.getenv("PUBLISH_TOKEN") as String
+}

@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'com.csereoka'
-version '1.0.1'
+version '1.0.3'
 
 repositories {
     mavenCentral()
@@ -17,12 +17,10 @@ dependencies {
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 intellij {
-    version = '2021.3.3'
+    version = '2022.1.2'
 }
 patchPluginXml {
-    changeNotes = """
-      First version, here we go!
-      """
+    sinceBuild = '203'
 }
 test {
     useJUnitPlatform()

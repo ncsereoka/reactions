@@ -4,8 +4,14 @@
     <vendor email="nandor.csereoka@gmail.com" url="https://www.csereoka.com">Nandor Csereoka</vendor>
 
     <description><![CDATA[
-    Speed up your workflow with some additional actions for React<br>
-    Only templates, for now
+    Speed up your workflow with some additional actions for React!<br>
+    <br>
+    A TypeScript-friendly plugin for daily needs - no, not a plugin for emoji reactions<br>
+    <br>
+    Current list of features:<br>
+    <ul>
+    <li>Create a React Component directory (index.ts, etc.)</li>
+    </ul>
     ]]></description>
 
     <depends>com.intellij.modules.platform</depends>

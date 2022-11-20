@@ -24,7 +24,8 @@ public class CreateReactComponentDirectoryAction extends AnAction implements Upd
     protected static final Logger LOG = Logger.getInstance(CreateReactComponentDirectoryAction.class);
 
     private static final String INDEX_FT = "index";
-    private static final String COMPONENT_FT = "Component";
+    private static final String COMPONENT_NO_CSS_FT = "ComponentNoCss";
+    private static final String COMPONENT_WITH_CSS_FT = "ComponentWithCss";
     private static final String CSS_FT = "CSS";
     private static final String STORYBOOK_FT = "Storybook";
 
@@ -66,7 +67,7 @@ public class CreateReactComponentDirectoryAction extends AnAction implements Upd
         final CreateFileFromTemplateDialog.Builder builder = CreateFileFromTemplateDialog
                 .createDialog(project)
                 .setTitle(NEW_REACT_COMPONENT_FOLDER)
-                .addKind(BASIC_NAME, null, COMPONENT_FT)
+                .addKind(BASIC_NAME, null, INDEX_FT)
                 .addKind(WITH_CSS_MODULE_NAME, null, CSS_FT)
                 .addKind(WITH_CSS_MODULE_AND_STORYBOOK_NAME, null, STORYBOOK_FT);
 
@@ -102,19 +103,21 @@ public class CreateReactComponentDirectoryAction extends AnAction implements Upd
         PsiDirectory newDirectory = dir.createSubdirectory(name);
         FileTemplateManager templateManager = getTemplateManagerInstance(newDirectory);
 
-        // Create the index file and the component itself, in any of the situations
+        // Create the index file no matter the situation
         createFileFromTemplate("index", templateManager.getInternalTemplate(INDEX_FT), newDirectory, name);
-        createFileFromTemplate(name, templateManager.getInternalTemplate(COMPONENT_FT), newDirectory, null);
 
         switch (templateName) {
             case CSS_FT:
+                createFileFromTemplate(name, templateManager.getInternalTemplate(COMPONENT_WITH_CSS_FT), newDirectory, null);
                 createFileFromTemplate(name + CSS_MODULE_SUFFIX, templateManager.getInternalTemplate(CSS_FT), newDirectory, null);
                 break;
             case STORYBOOK_FT:
+                createFileFromTemplate(name, templateManager.getInternalTemplate(COMPONENT_WITH_CSS_FT), newDirectory, null);
                 createFileFromTemplate(name + CSS_MODULE_SUFFIX, templateManager.getInternalTemplate(CSS_FT), newDirectory, null);
                 createFileFromTemplate(name + STORYBOOK_SUFFIX, templateManager.getInternalTemplate(STORYBOOK_FT), newDirectory, name);
                 break;
             default:
+                createFileFromTemplate(name, templateManager.getInternalTemplate(COMPONENT_NO_CSS_FT), newDirectory, null);
                 break;
         }
 

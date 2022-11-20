@@ -1,0 +1,5 @@
+const ${NAME} = () => {
+    return <div>${NAME}</div>;
+};
+
+export default ${NAME};

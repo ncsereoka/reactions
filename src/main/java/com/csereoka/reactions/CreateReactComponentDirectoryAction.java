@@ -100,28 +100,28 @@ public class CreateReactComponentDirectoryAction extends AnAction implements Upd
     }
 
     private PsiDirectory createComponentDirectory(String name, String templateName, PsiDirectory dir) {
-        PsiDirectory newDirectory = dir.createSubdirectory(name);
-        FileTemplateManager templateManager = getTemplateManagerInstance(newDirectory);
+        PsiDirectory newDir = dir.createSubdirectory(name);
+        FileTemplateManager tm = getTemplateManagerInstance(newDir);
 
         // Create the index file no matter the situation
-        createFileFromTemplate("index", templateManager.getInternalTemplate(INDEX_FT), newDirectory, name);
+        createFileFromTemplate("index", tm.getInternalTemplate(INDEX_FT), newDir, name);
 
         switch (templateName) {
             case CSS_FT:
-                createFileFromTemplate(name, templateManager.getInternalTemplate(COMPONENT_WITH_CSS_FT), newDirectory, null);
-                createFileFromTemplate(name + CSS_MODULE_SUFFIX, templateManager.getInternalTemplate(CSS_FT), newDirectory, null);
+                createFileFromTemplate(name, tm.getInternalTemplate(COMPONENT_WITH_CSS_FT), newDir, null);
+                createFileFromTemplate(name + CSS_MODULE_SUFFIX, tm.getInternalTemplate(CSS_FT), newDir, null);
                 break;
             case STORYBOOK_FT:
-                createFileFromTemplate(name, templateManager.getInternalTemplate(COMPONENT_WITH_CSS_FT), newDirectory, null);
-                createFileFromTemplate(name + CSS_MODULE_SUFFIX, templateManager.getInternalTemplate(CSS_FT), newDirectory, null);
-                createFileFromTemplate(name + STORYBOOK_SUFFIX, templateManager.getInternalTemplate(STORYBOOK_FT), newDirectory, name);
+                createFileFromTemplate(name, tm.getInternalTemplate(COMPONENT_WITH_CSS_FT), newDir, null);
+                createFileFromTemplate(name + CSS_MODULE_SUFFIX, tm.getInternalTemplate(CSS_FT), newDir, null);
+                createFileFromTemplate(name + STORYBOOK_SUFFIX, tm.getInternalTemplate(STORYBOOK_FT), newDir, name);
                 break;
             default:
-                createFileFromTemplate(name, templateManager.getInternalTemplate(COMPONENT_NO_CSS_FT), newDirectory, null);
+                createFileFromTemplate(name, tm.getInternalTemplate(COMPONENT_NO_CSS_FT), newDir, null);
                 break;
         }
 
-        return newDirectory;
+        return newDir;
     }
 
     public static void createFileFromTemplate(@Nullable String fileName, @NotNull FileTemplate template, @NotNull PsiDirectory dir, @Nullable String customName) {

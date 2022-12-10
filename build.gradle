@@ -1,10 +1,10 @@
 plugins {
-    id 'org.jetbrains.intellij' version '1.10.0'
+    id 'org.jetbrains.intellij' version '1.10.1'
     id 'java'
 }
 
 group 'com.csereoka'
-version '1.0.5'
+version '1.0.6'
 
 repositories {
     mavenCentral()
@@ -17,7 +17,7 @@ dependencies {
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 intellij {
-    version = '2022.2.3'
+    version = '2022.3'
 }
 patchPluginXml {
     sinceBuild = '203'

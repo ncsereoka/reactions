@@ -20,7 +20,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Properties;
 
-public class CreateReactComponentDirectoryAction extends AnAction implements UpdateInBackground, WriteActionAware {
+public class CreateReactComponentDirectoryAction extends AnAction implements WriteActionAware {
     protected static final Logger LOG = Logger.getInstance(CreateReactComponentDirectoryAction.class);
 
     private static final String INDEX_FT = "index";
